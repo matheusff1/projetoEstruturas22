@@ -19,7 +19,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         return minIndex
     }
 
-    fun shortestPath(origem: Int, destino: Int): String {
+    fun cCaminho(origem: Int, destino: Int): String {
         val dist = IntArray(vertices) { Int.MAX_VALUE }
         val visited = BooleanArray(vertices)
         val prev = IntArray(vertices) { -1 }
@@ -40,12 +40,12 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             }
         }
 
-        return printSolution(dist, prev, origem, destino)
+        return mostrarSolucao(dist, prev, origem, destino)
     }
 
-    private fun printSolution(dist: IntArray, prev: IntArray, origin: Int, destination: Int): String {
+    private fun mostrarSolucao(dist: IntArray, prev: IntArray, origin: Int, destination: Int): String {
         if (dist[destination] == Int.MAX_VALUE) {
-            return "No path found from $origin to $destination"
+            return "ERRO, nehum caminho foi encontrado entre $origin e $destination"
         }
 
         val path = LinkedList<Int>()

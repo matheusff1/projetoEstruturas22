@@ -7,9 +7,21 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
+
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        android:textAlignment="center"
+        android:text="H15 = 1,  H11 = 0, CTA = 2, CTB = 3,  H14 = 4, H12 = 5, H9 = 6"
+       />
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        android:layout_width="match_parent"
+        android:layout_marginTop="38dp"
         android:layout_height="75dp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
@@ -23,20 +35,22 @@
         android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/titulo"
-        android:maxLength="3"
+        android:maxLength="1"
         android:hint="PRÉDIO INICIAL: "
         android:textSize="20sp"
         android:id="@+id/etPI"
         />
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="wrap_content"
+        android:inputType="numberDecimal"
         android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/etPI"
-        android:maxLength="3"
+        android:maxLength="1"
         android:hint="PRÉDIO FINAL: "
         android:textSize="20sp"
         android:id="@+id/etPF"
