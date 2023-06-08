@@ -55,12 +55,15 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             node = prev[node]
         }
 
-        println("Shortest path from $origin to $destination:")
+        var Lista = mutableListOf<Int>()
+
+        println("Caminho mais curto entre $origin e $destination:")
         for (i in path) {
             print("$i ")
+            Lista.add(i)
         }
-        println("\nTotal distance: ${dist[destination]}")
+        println("\nDistância total: ${dist[destination]}")
 
-        return "O caminho mais curto entre $origin e $destination leva ${dist[destination]} segundos."
+        return "O caminho mais curto entre $origin e $destination leva ${dist[destination]} segundos. O caminho foi: $Lista."
     }
 }

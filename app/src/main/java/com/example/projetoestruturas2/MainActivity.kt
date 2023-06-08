@@ -17,19 +17,15 @@ class MainActivity : AppCompatActivity() {
             /*h14*/ intArrayOf(0,0,0,60,0,121,0),/*h12*/intArrayOf(0,180,0,151,121,0,153), /*h9*/ intArrayOf(33,77,0,0,0,153,0)
         )
 
-        val dijkstra = MetodosCalculo(matriz)
-
-        val origin = 1
-        val destination =4
 
         binding.bCalculo.setOnClickListener {
             if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
                 binding.etPI.error = "Digite o prédio inicial"
                 binding.etPF.error = "Digite o prédio destino"
             } else {
-                val origem  = binding.etPI.toString().toInt()
-                val destino =  binding.etPF.toString().toInt()
-                binding.tvResultado.text= dijkstra.cCaminho(origem, destino)
+
+                val dijkstra = MetodosCalculo(matriz)
+                binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
 
             }
         }
