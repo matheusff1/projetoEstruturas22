@@ -5,7 +5,7 @@ import java.util.*
 class MetodosCalculo(private val matriz: Array<IntArray>) {
     private val vertices: Int = matriz.size
 
-    private fun minDistance(dist: IntArray, visited: BooleanArray): Int {
+    private fun distanciaMinima(dist: IntArray, visited: BooleanArray): Int {
         var min = Int.MAX_VALUE
         var minIndex = -1
 
@@ -19,33 +19,33 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         return minIndex
     }
 
-    fun shortestPath(origin: Int, destination: Int) {
+    fun shortestPath(origem: Int, destino: Int): String {
         val dist = IntArray(vertices) { Int.MAX_VALUE }
         val visited = BooleanArray(vertices)
         val prev = IntArray(vertices) { -1 }
 
-        dist[origin] = 0
+        dist[origem] = 0
 
         for (count in 0 until vertices - 1) {
-            val i = minDistance(dist, visited)
+            val i = distanciaMinima(dist, visited)
             visited[i] = true
 
             for (j in 0 until vertices) {
                 if (!visited[j] && matriz[i][j] != 0 && dist[i] != Int.MAX_VALUE
-                    && dist[i] + matriz[i][j] < dist[j]) {
+                    && dist[i] + matriz[i][j] < dist[j]
+                ) {
                     dist[j] = dist[i] + matriz[i][j]
                     prev[j] = i
                 }
             }
         }
 
-        printSolution(dist, prev, origin, destination)
+        return printSolution(dist, prev, origem, destino)
     }
 
-    private fun printSolution(dist: IntArray, prev: IntArray, origin: Int, destination: Int) {
+    private fun printSolution(dist: IntArray, prev: IntArray, origin: Int, destination: Int): String {
         if (dist[destination] == Int.MAX_VALUE) {
-            println("No path found from $origin to $destination")
-            return
+            return "No path found from $origin to $destination"
         }
 
         val path = LinkedList<Int>()
@@ -60,5 +60,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             print("$i ")
         }
         println("\nTotal distance: ${dist[destination]}")
+
+        return "O caminho mais curto entre $origin e $destination leva ${dist[destination]} segundos."
     }
 }

@@ -27,10 +27,12 @@ class MainActivity : AppCompatActivity() {
                 binding.etPI.error = "Digite o prédio destino"
             } else {
                 if(caixinhasDeTexto() ) {
+                    binding.tvResultado.text= dijkstra.shortestPath(origin, destination)
+                } else{
+                    binding.tvResultado.text= dijkstra.shortestPath(origin, destination)
                     binding.etPI.error = "Digite apenas o nome do prédio, exemplo: H15"
                     binding.etPF.error = "Digite apenas o nome do prédio, exemplo: H15"
-                } else{
-                    dijkstra.shortestPath(origin, destination)
+
 
                 }
             }
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun caixinhasDeTexto(): Boolean {
-        return (binding.etPI.text.toString().uppercase()!="CTA"
+        if (binding.etPI.text.toString().uppercase()!="CTA"
                 || binding.etPI.text.toString().uppercase()!="H15"
                 || binding.etPI.text.toString().uppercase()!="H11"
                 || binding.etPI.text.toString().uppercase()!="H14"
@@ -50,7 +52,11 @@ class MainActivity : AppCompatActivity() {
                 || binding.etPF.text.toString().uppercase()!="H11"
                 || binding.etPF.text.toString().uppercase()!="H14"
                 || binding.etPF.text.toString().uppercase()!="H12"
-                || binding.etPF.text.toString().uppercase()!="CTB")
+                || binding.etPF.text.toString().uppercase()!="CTB") {
+            return false
+        } else{
+            return true
+        }
     }
 
 
