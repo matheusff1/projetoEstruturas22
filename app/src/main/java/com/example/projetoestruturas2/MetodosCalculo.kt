@@ -2,17 +2,17 @@ package com.example.projetoestruturas2
 
 import java.util.*
 
-class MetodosCalculo(private val matrix: Array<IntArray>) {
-    private val vertices: Int = matrix.size
+class MetodosCalculo(private val matriz: Array<IntArray>) {
+    private val vertices: Int = matriz.size
 
     private fun minDistance(dist: IntArray, visited: BooleanArray): Int {
         var min = Int.MAX_VALUE
         var minIndex = -1
 
-        for (v in 0 until vertices) {
-            if (!visited[v] && dist[v] <= min) {
-                min = dist[v]
-                minIndex = v
+        for (j in 0 until vertices) {
+            if (!visited[j] && dist[j] <= min) {
+                min = dist[j]
+                minIndex = j
             }
         }
 
@@ -27,14 +27,14 @@ class MetodosCalculo(private val matrix: Array<IntArray>) {
         dist[origin] = 0
 
         for (count in 0 until vertices - 1) {
-            val u = minDistance(dist, visited)
-            visited[u] = true
+            val i = minDistance(dist, visited)
+            visited[i] = true
 
-            for (v in 0 until vertices) {
-                if (!visited[v] && matrix[u][v] != 0 && dist[u] != Int.MAX_VALUE
-                    && dist[u] + matrix[u][v] < dist[v]) {
-                    dist[v] = dist[u] + matrix[u][v]
-                    prev[v] = u
+            for (j in 0 until vertices) {
+                if (!visited[j] && matriz[i][j] != 0 && dist[i] != Int.MAX_VALUE
+                    && dist[i] + matriz[i][j] < dist[j]) {
+                    dist[j] = dist[i] + matriz[i][j]
+                    prev[j] = i
                 }
             }
         }

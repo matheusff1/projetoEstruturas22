@@ -2,11 +2,15 @@ package com.example.projetoestruturas2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.projetoestruturas2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val matrix = arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0),/*h15*/ intArrayOf(40, 0, 87,0,0,180),
             /*cta*/intArrayOf(122,81,0,30,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131),
@@ -16,8 +20,40 @@ class MainActivity : AppCompatActivity() {
 
         val origin = 0
         val destination = 2
-        dijkstra.shortestPath(origin, destination)
+
+        binding.bCalculo.setOnClickListener {
+            if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
+                binding.etPF.error = "Digite o prédio inicial"
+                binding.etPI.error = "Digite o prédio destino"
+            } else {
+                if(caixinhasDeTexto() ) {
+                    binding.etPI.error = "Digite apenas o nome do prédio, exemplo: H15"
+                    binding.etPF.error = "Digite apenas o nome do prédio, exemplo: H15"
+                } else{
+                    dijkstra.shortestPath(origin, destination)
+
+                }
+            }
+        }
+
     }
+    private fun caixinhasDeTexto(): Boolean {
+        return (binding.etPI.text.toString().uppercase()!="CTA"
+                || binding.etPI.text.toString().uppercase()!="H15"
+                || binding.etPI.text.toString().uppercase()!="H11"
+                || binding.etPI.text.toString().uppercase()!="H14"
+                || binding.etPI.text.toString().uppercase()!="H12"
+                || binding.etPI.text.toString().uppercase()!="CTB"
+                &&
+                binding.etPF.text.toString().uppercase()!="CTA"
+                || binding.etPF.text.toString().uppercase()!="H15"
+                || binding.etPF.text.toString().uppercase()!="H11"
+                || binding.etPF.text.toString().uppercase()!="H14"
+                || binding.etPF.text.toString().uppercase()!="H12"
+                || binding.etPF.text.toString().uppercase()!="CTB")
+    }
+
+
 
 
 
