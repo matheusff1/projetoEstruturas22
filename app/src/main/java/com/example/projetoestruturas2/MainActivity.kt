@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var matrix: Array<IntArray>
 
-
-        db.collection("users")
+        db.collection("matriz")
             .document("matrizz")
             .get()
             .addOnSuccessListener { result ->
@@ -31,9 +31,25 @@ class MainActivity : AppCompatActivity() {
                     val h14 = intArrayOf(Integer.parseInt(result["h14"].toString()))
                     val h12 = intArrayOf(Integer.parseInt(result["h12"].toString()))
                     val h9 = intArrayOf(Integer.parseInt(result["h9"].toString()))
-                    val matrix = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
+                    matrix = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
+
+                binding.bCalculo.setOnClickListener {
+                    if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
+                        binding.etPI.error = "Digite o prédio inicial"
+                        binding.etPF.error = "Digite o prédio destino"
+                    } else {
+
+                        val dijkstra = MetodosCalculo(matrix)
+                        binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
+
+                    }
+                }
                 }
 
+        /*arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0,33),/*h15*/ intArrayOf(40, 0, 87,0,0,180,97),
+            /*cta*/intArrayOf(122,81,0,30,0,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131,0),
+            /*h14*/ intArrayOf(0,0,0,60,0,121,0),/*h12*/intArrayOf(0,180,0,151,121,0,153), /*h9*/ intArrayOf(33,97,0,0,0,153,0)
+        )*/
 
         val matriz = arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0,33),/*h15*/ intArrayOf(40, 0, 87,0,0,180,97),
             /*cta*/intArrayOf(122,81,0,30,0,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131,0),
@@ -42,17 +58,17 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.bCalculo.setOnClickListener {
+       /* binding.bCalculo.setOnClickListener {
             if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
                 binding.etPI.error = "Digite o prédio inicial"
                 binding.etPF.error = "Digite o prédio destino"
             } else {
 
-                val dijkstra = MetodosCalculo(matriz)
+                val dijkstra = MetodosCalculo(matrix)
                 binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
 
             }
-        }
+        } */
 
     }
     private fun caixinhasDeTexto1(): Boolean {
