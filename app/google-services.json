@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "885328794869",
-    "project_id": "authnotify-fafd7",
-    "storage_bucket": "authnotify-fafd7.appspot.com"
+    "project_number": "47065806071",
+    "project_id": "projetoestruturas-d70ea",
+    "storage_bucket": "projetoestruturas-d70ea.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:885328794869:android:4a71efeaa350d18abb21bc",
+        "mobilesdk_app_id": "1:47065806071:android:c0a01de6573c5987270ff2",
         "android_client_info": {
-          "package_name": "br.pro.mateus.authnotify"
+          "package_name": "com.example.projetoestruturas2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "885328794869-spvmhd592sjppkerfaq1ajmo8sil97lf.apps.googleusercontent.com",
+          "client_id": "47065806071-5cu3jhld4sf3n4ovmqe3d1tqusr414bd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCpcC5InmesMEn0CCCMjugEr_j9AHQPIco"
+          "current_key": "AIzaSyCT6vi1N6zxakhT_6l6tczNjU80UHFks1M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "885328794869-spvmhd592sjppkerfaq1ajmo8sil97lf.apps.googleusercontent.com",
+              "client_id": "47065806071-5cu3jhld4sf3n4ovmqe3d1tqusr414bd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
