@@ -55,7 +55,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             node = prev[node]
         }
 
-        var Lista = mutableListOf<Int>()
+        val Lista = mutableListOf<Int>()
 
         println("Caminho mais curto entre $origin e $destination:")
         for (i in path) {
