@@ -24,14 +24,26 @@ class MainActivity : AppCompatActivity() {
             .document("matrizz")
             .get()
             .addOnSuccessListener { result ->
-                    val h11 = intArrayOf(Integer.parseInt(result["h11"].toString()))
-                    val h15 = intArrayOf(Integer.parseInt(result["h15"].toString()))
-                    val cta = intArrayOf(Integer.parseInt(result["cta"].toString()))
-                    val ctb = intArrayOf(Integer.parseInt(result["ctb"].toString()))
-                    val h14 = intArrayOf(Integer.parseInt(result["h14"].toString()))
-                    val h12 = intArrayOf(Integer.parseInt(result["h12"].toString()))
-                    val h9 = intArrayOf(Integer.parseInt(result["h9"].toString()))
-                    matrix = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
+                    val h11 = result.get("h11") as ArrayList<Int>
+                    val h15 = result.get("h15") as ArrayList<Int>
+                    val cta = result.get("cta") as ArrayList<Int>
+                    val ctb = result.get("ctb") as ArrayList<Int>
+                    val h14 = result.get("h14") as ArrayList<Int>
+                    val h12 = result.get("h12") as ArrayList<Int>
+                    val h9 = result.get("h9") as ArrayList<Int>
+
+                    val h111 = h11.toIntArray()
+                    val h155 = h15.toIntArray()
+                    val ctaa = cta.toIntArray()
+                    val ctbb = ctb.toIntArray()
+                    val h144 = h14.toIntArray()
+                    val h122 = h12.toIntArray()
+                    val h99 = h9.toIntArray()
+
+
+                    matrix = arrayOf(h111,h155,ctaa,ctbb,h144,h122,h99)
+
+                println(h11)
 
                 binding.bCalculo.setOnClickListener {
                     if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
