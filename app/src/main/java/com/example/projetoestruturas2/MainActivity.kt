@@ -36,9 +36,11 @@ class MainActivity : AppCompatActivity() {
                 binding.bCalculo.setOnClickListener {
                     val dijkstra = MetodosCalculo(matrix)
                     when{
-                        binding.etPF.text!!.isEmpty() -> binding.etPI.error = "Digite o prédio inicial"
-                        binding.etPI.text!!.isEmpty() -> binding.etPF.error = "Digite o prédio destino"
-                        binding.etPF.text!!.
+                        binding.etPI.text!!.isEmpty() -> binding.etPI.error = "Digite o prédio inicial"
+                        binding.etPF.text!!.isEmpty() -> binding.etPF.error = "Digite o prédio destino"
+                        binding.etPI.text!!.equals(7) -> binding.etPI.error = "Digite um valor abaixo de 7"
+                        binding.etPF.text!!.equals(7) -> binding.etPF.error = "Digite um valor abaixo de 7"
+
                         else -> binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
 
                     }
