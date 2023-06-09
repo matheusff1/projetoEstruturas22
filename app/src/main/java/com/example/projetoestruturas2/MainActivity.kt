@@ -22,16 +22,17 @@ class MainActivity : AppCompatActivity() {
             .document("matrizz")
             .get()
             .addOnSuccessListener { result ->
-                    val h11 = (result.get("h11") as ArrayList<Int>).toIntArray()
-                    val h15 = (result.get("h15") as ArrayList<Int>).toIntArray()
-                    val cta = (result.get("cta") as ArrayList<Int>).toIntArray()
-                    val ctb = (result.get("ctb") as ArrayList<Int>).toIntArray()
-                    val h14 = (result.get("h14") as ArrayList<Int>).toIntArray()
-                    val h12 = (result.get("h12") as ArrayList<Int>).toIntArray()
-                    val h9 = (result.get("h9") as ArrayList<Int>).toIntArray()
+                val h11 = (result.get("h11") as ArrayList<Int>).toIntArray()
+                val h15 = (result.get("h15") as ArrayList<Int>).toIntArray()
+                val cta = (result.get("cta") as ArrayList<Int>).toIntArray()
+                val ctb = (result.get("ctb") as ArrayList<Int>).toIntArray()
+                val h14 = (result.get("h14") as ArrayList<Int>).toIntArray()
+                val h12 = (result.get("h12") as ArrayList<Int>).toIntArray()
+                val h9 = (result.get("h9") as ArrayList<Int>).toIntArray()
 
-                    matriz = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
+                matriz = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
                 binding.bCalculo.setOnClickListener {
+                    binding.tvResultado.text=""
                     val dijkstra = MetodosCalculo(matriz)
                     when{
                         (binding.etPI.text!!.toString() == "7" || binding.etPI.text!!.toString() == "8" || binding.etPI.text!!.toString() == "9") -> binding.etPI.error = "Digite um numero entre 0 e 6"

@@ -46,19 +46,21 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
     private fun mostrarSolucao(dist: IntArray, prev: IntArray, origem: Int, destino: Int): String {
         var a=""
         var b=""
+        val caminho = LinkedList<Int>()
+        var no = destino
+        val lista = mutableListOf<String>()
+        val tempo = dist[destino]
+        val tempomin = String.format("%.1f", (tempo/60.0).toFloat())
+
         if (dist[destino] == Int.MAX_VALUE) {
             return "ERRO, nehum caminho foi encontrado entre $origem e $destino"
         }
-
-        val caminho = LinkedList<Int>()
-        var no = destino
 
         while (no != -1) {
             caminho.addFirst(no)
             no = prev[no]
         }
 
-        val lista = mutableListOf<String>()
 
         for (i in caminho) {
             if(i==0){
@@ -103,9 +105,6 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             5 -> b= "H12"
             6 -> b= "H9"
         }
-
-        val tempo = dist[destino]
-        val tempomin = String.format("%.1f", (tempo/60.0).toFloat())
 
         return if (a!=b){
             "A melhor rota entre $a e $b  é: $lista, e leva aproximadamente $tempomin minutos ou $tempo segundos."
