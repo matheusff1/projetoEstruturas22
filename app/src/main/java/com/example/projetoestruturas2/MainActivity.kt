@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
                     when{
                         binding.etPI.text!!.isEmpty() -> binding.etPI.error = "Digite o prédio inicial"
                         binding.etPF.text!!.isEmpty() -> binding.etPF.error = "Digite o prédio destino"
-                        binding.etPI.text!!.equals(7) -> binding.etPI.error = "Digite um valor abaixo de 7"
-                        binding.etPF.text!!.equals(7) -> binding.etPF.error = "Digite um valor abaixo de 7"
 
                         else -> binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
 
