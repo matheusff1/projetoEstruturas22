@@ -44,6 +44,8 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
     }
 
     private fun mostrarSolucao(dist: IntArray, prev: IntArray, origem: Int, destino: Int): String {
+        var a=""
+        var b=""
         if (dist[destino] == Int.MAX_VALUE) {
             return "ERRO, nehum caminho foi encontrado entre $origem e $destino"
         }
@@ -60,7 +62,26 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         for (i in caminho) {
             lista.add(i)
         }
+        when (origem) {
+            0 -> a= "H11"
+            1 -> a= "H15"
+            2 -> a= "CTA"
+            3 -> a= "CTB"
+            4 -> a= "H14"
+            5 -> a= "H12"
+            6 -> a= "H9"
+        }
+        when (destino) {
+            0 -> b= "H11"
+            1 -> b= "H15"
+            2 -> b= "CTA"
+            3 -> b= "CTB"
+            4 -> b= "H14"
+            5 -> b= "H12"
+            6 -> b= "H9"
+        }
 
-        return "O caminho mais curto entre $origem e $destino leva ${dist[destino]} segundos ou aproximadamente ${(dist[destino])/60} minutos. O caminho foi: $lista."
+
+        return "O caminho mais curto entre $a e $b leva ${dist[destino]} segundos ou aproximadamente ${(dist[destino]).toFloat()/60} minutos. O caminho foi: $lista."
     }
 }
