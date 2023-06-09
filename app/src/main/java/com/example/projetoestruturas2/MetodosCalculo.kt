@@ -102,7 +102,10 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         }
 
         val tempo = dist[destino]
-        val tempomin = String.format("%.2f", (tempo/60.0).toFloat())
-        return "O caminho mais curto entre $a e $b leva $tempo segundos ou aproximadamente $tempomin minutos. O caminho foi: $lista."
+        val tempomin = String.format("%.1f", (tempo/60.0).toFloat())
+        return if (a!=b){
+            "A melhor rota entre $a e $b  é: $lista, e leva aproximadamente $tempomin minutos ou $tempo segundos."
+
+        } else "Insira outro destino/origem para que melhor rota seja calculada."
     }
 }
