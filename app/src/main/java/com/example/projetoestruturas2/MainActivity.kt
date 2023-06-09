@@ -32,41 +32,32 @@ class MainActivity : AppCompatActivity() {
                     val h12 = (result.get("h12") as ArrayList<Int>).toIntArray()
                     val h9 = (result.get("h9") as ArrayList<Int>).toIntArray()
 
-                    /*val h111 = h11.toIntArray()
-                    val h155 = h15.toIntArray()
-                    val ctaa = cta.toIntArray()
-                    val ctbb = ctb.toIntArray()
-                    val h144 = h14.toIntArray()
-                    val h122 = h12.toIntArray()
-                    val h99 = h9.toIntArray()*/
-
-
                     matrix = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
-
-                println(h11)
 
                 binding.bCalculo.setOnClickListener {
                     if(binding.etPF.text!!.isEmpty() || binding.etPI.text!!.isEmpty()){
                         binding.etPI.error = "Digite o prédio inicial"
                         binding.etPF.error = "Digite o prédio destino"
-                    } else {
+                    }
+
+                    else {
 
                         val dijkstra = MetodosCalculo(matrix)
                         binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
 
                     }
                 }
-                }
+            }
 
         /*arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0,33),/*h15*/ intArrayOf(40, 0, 87,0,0,180,97),
             /*cta*/intArrayOf(122,81,0,30,0,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131,0),
             /*h14*/ intArrayOf(0,0,0,60,0,121,0),/*h12*/intArrayOf(0,180,0,151,121,0,153), /*h9*/ intArrayOf(33,97,0,0,0,153,0)
         )*/
 
-        val matriz = arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0,33),/*h15*/ intArrayOf(40, 0, 87,0,0,180,97),
-            /*cta*/intArrayOf(122,81,0,30,0,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131,0),
-            /*h14*/ intArrayOf(0,0,0,60,0,121,0),/*h12*/intArrayOf(0,180,0,151,121,0,153), /*h9*/ intArrayOf(33,97,0,0,0,153,0)
-        )
+//        val matriz = arrayOf( /*h11*/ intArrayOf(0, 40,122, 140,0,0,33),/*h15*/ intArrayOf(40, 0, 87,0,0,180,97),
+//            /*cta*/intArrayOf(122,81,0,30,0,0,0), /*ctb*/intArrayOf(140,0,30,0,60,131,0),
+//            /*h14*/ intArrayOf(0,0,0,60,0,121,0),/*h12*/intArrayOf(0,180,0,151,121,0,153), /*h9*/ intArrayOf(33,97,0,0,0,153,0)
+//        )
 
 
 

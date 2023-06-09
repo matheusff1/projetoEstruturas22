@@ -5,33 +5,33 @@ import java.util.*
 class MetodosCalculo(private val matriz: Array<IntArray>) {
     private val vertices: Int = matriz.size
 
-    private fun distanciaMinima(dist: IntArray, visited: BooleanArray): Int {
+    private fun distanciaMinima(dist: IntArray, visitado: BooleanArray): Int {
         var min = Int.MAX_VALUE
-        var minIndex = -1
+        var minIndice = -1
 
         for (j in 0 until vertices) {
-            if (!visited[j] && dist[j] <= min) {
+            if (!visitado[j] && dist[j] <= min) {
                 min = dist[j]
-                minIndex = j
+                minIndice = j
             }
         }
 
-        return minIndex
+        return minIndice
     }
 
     fun cCaminho(origem: Int, destino: Int): String {
         val dist = IntArray(vertices) { Int.MAX_VALUE }
-        val visited = BooleanArray(vertices)
+        val visitado = BooleanArray(vertices)
         val prev = IntArray(vertices) { -1 }
 
         dist[origem] = 0
 
         for (count in 0 until vertices - 1) {
-            val i = distanciaMinima(dist, visited)
-            visited[i] = true
+            val i = distanciaMinima(dist, visitado)
+            visitado[i] = true
 
             for (j in 0 until vertices) {
-                if (!visited[j] && matriz[i][j] != 0 && dist[i] != Int.MAX_VALUE
+                if (!visitado[j] && matriz[i][j] != 0 && dist[i] != Int.MAX_VALUE
                     && dist[i] + matriz[i][j] < dist[j]
                 ) {
                     dist[j] = dist[i] + matriz[i][j]
@@ -43,24 +43,24 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         return mostrarSolucao(dist, prev, origem, destino)
     }
 
-    private fun mostrarSolucao(dist: IntArray, prev: IntArray, origin: Int, destination: Int): String {
-        if (dist[destination] == Int.MAX_VALUE) {
-            return "ERRO, nehum caminho foi encontrado entre $origin e $destination"
+    private fun mostrarSolucao(dist: IntArray, prev: IntArray, origem: Int, destino: Int): String {
+        if (dist[destino] == Int.MAX_VALUE) {
+            return "ERRO, nehum caminho foi encontrado entre $origem e $destino"
         }
 
-        val path = LinkedList<Int>()
-        var node = destination
-        while (node != -1) {
-            path.addFirst(node)
-            node = prev[node]
+        val caminho = LinkedList<Int>()
+        var no = destino
+        while (no != -1) {
+            caminho.addFirst(no)
+            no = prev[no]
         }
 
-        val Lista = mutableListOf<Int>()
+        val lista = mutableListOf<Int>()
 
-        for (i in path) {
-            Lista.add(i)
+        for (i in caminho) {
+            lista.add(i)
         }
 
-        return "O caminho mais curto entre $origin e $destination leva ${dist[destination]} segundos. O caminho foi: $Lista."
+        return "O caminho mais curto entre $origem e $destino leva ${dist[destino]} segundos ou aproximadamente ${(dist[destino])/60} minutos. O caminho foi: $lista."
     }
 }
