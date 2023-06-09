@@ -81,7 +81,8 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             6 -> b= "H9"
         }
 
-
-        return "O caminho mais curto entre $a e $b leva ${dist[destino]} segundos ou aproximadamente ${(dist[destino]).toFloat()/60} minutos. O caminho foi: $lista."
+        val tempo = dist[destino]
+        val tempomin = String.format("%.2f", (tempo/60.0).toFloat())
+        return "O caminho mais curto entre $a e $b leva $tempo segundos ou aproximadamente $tempomin minutos. O caminho foi: $lista."
     }
 }
