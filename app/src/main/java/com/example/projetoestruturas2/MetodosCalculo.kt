@@ -57,10 +57,30 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             no = prev[no]
         }
 
-        val lista = mutableListOf<Int>()
+        val lista = mutableListOf<String>()
 
         for (i in caminho) {
-            lista.add(i)
+            if(i==0){
+                lista.add("H11")
+            }
+            if (i==1){
+                lista.add("H15")
+            }
+            if(i==2){
+                lista.add("CTA")
+            }
+            if (i==3){
+                lista.add("CTB")
+            }
+           if(i==4){
+               lista.add("H14")
+           }
+            if(i==5){
+                lista.add("H12")
+            }
+            if (i==6){
+                lista.add("H9")
+            }
         }
         when (origem) {
             0 -> a= "H11"
