@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var matrix: Array<IntArray>
+        var matriz: Array<IntArray>
 
         db.collection("matriz")
             .document("matrizz")
@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
                     val h12 = (result.get("h12") as ArrayList<Int>).toIntArray()
                     val h9 = (result.get("h9") as ArrayList<Int>).toIntArray()
 
-                    matrix = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
+                    matriz = arrayOf(h11,h15,cta,ctb,h14,h12,h9)
                 binding.bCalculo.setOnClickListener {
-                    val dijkstra = MetodosCalculo(matrix)
+                    val dijkstra = MetodosCalculo(matriz)
                     when{
                         (binding.etPI.text!!.toString() == "7" || binding.etPI.text!!.toString() == "8" || binding.etPI.text!!.toString() == "9") -> binding.etPI.error = "Digite um numero entre 0 e 6"
                         (binding.etPF.text!!.toString() == "7" || binding.etPF.text!!.toString() == "8" || binding.etPF.text!!.toString() == "9") -> binding.etPF.error = "Digite um numero entre 0 e 6"
