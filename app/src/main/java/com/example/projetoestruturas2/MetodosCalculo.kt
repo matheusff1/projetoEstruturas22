@@ -110,6 +110,6 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
         return if (a!=b){
             "A melhor rota entre $a e $b  é: $lista, e leva aproximadamente $tempomin minutos ou $tempo segundos."
 
-        } else "Insira outro destino/origem para que melhor rota seja calculada."
+        } else "Insira outro destino/origem para que a melhor rota seja calculada."
     }
 }
