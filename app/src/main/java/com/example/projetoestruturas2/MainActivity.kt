@@ -1,14 +1,12 @@
 package com.example.projetoestruturas2
 
-import android.content.ContentValues
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.projetoestruturas2.databinding.ActivityMainBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+@Suppress("UNCHECKED_CAST")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -40,32 +38,9 @@ class MainActivity : AppCompatActivity() {
                         (binding.etPF.text!!.toString() == "7" || binding.etPF.text!!.toString() == "8" || binding.etPF.text!!.toString() == "9") -> binding.etPF.error = "Digite um numero entre 0 e 6"
                         binding.etPI.text!!.isEmpty() -> binding.etPI.error = "Digite o prédio inicial"
                         binding.etPF.text!!.isEmpty() -> binding.etPF.error = "Digite o prédio destino"
-
-
                         else -> binding.tvResultado.text= dijkstra.cCaminho(Integer.parseInt(binding.etPI.text.toString()), Integer.parseInt(binding.etPF.text.toString()))
-
                     }
                 }
             }
     }
-    private fun caixinhasDeTexto1(): Boolean {
-        return !(binding.etPI.text.toString()!="0"
-                || binding.etPI.text.toString()!="1"
-                || binding.etPI.text.toString()!="2"
-                || binding.etPI.text.toString()!="3"
-                || binding.etPI.text.toString()!="4"
-                || binding.etPI.text.toString()!="5"
-                || binding.etPI.text.toString()!="6")
-    }
-
-    private fun caixinhaDeTexto2(): Boolean{
-        return !(binding.etPF.text.toString()!="0"
-                || binding.etPF.text.toString()!="1"
-                || binding.etPF.text.toString()!="2"
-                || binding.etPF.text.toString()!="3"
-                || binding.etPF.text.toString()!="4"
-                || binding.etPF.text.toString()!="5"
-                || binding.etPF.text.toString()!="6")
-    }
-
 }

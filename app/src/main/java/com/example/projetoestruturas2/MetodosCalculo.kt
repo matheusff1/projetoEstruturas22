@@ -52,6 +52,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
 
         val caminho = LinkedList<Int>()
         var no = destino
+
         while (no != -1) {
             caminho.addFirst(no)
             no = prev[no]
@@ -82,6 +83,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
                 lista.add("H9")
             }
         }
+
         when (origem) {
             0 -> a= "H11"
             1 -> a= "H15"
@@ -91,6 +93,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
             5 -> a= "H12"
             6 -> a= "H9"
         }
+
         when (destino) {
             0 -> b= "H11"
             1 -> b= "H15"
@@ -103,6 +106,7 @@ class MetodosCalculo(private val matriz: Array<IntArray>) {
 
         val tempo = dist[destino]
         val tempomin = String.format("%.1f", (tempo/60.0).toFloat())
+
         return if (a!=b){
             "A melhor rota entre $a e $b  é: $lista, e leva aproximadamente $tempomin minutos ou $tempo segundos."
 
